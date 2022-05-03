@@ -12,6 +12,7 @@ $color-primary-dark: #28b485;
 
 $color-grey-dark: #777;
 $color-white: #fff;
+$color-black: #000;
 
 /* universal reset  */
 *,
@@ -50,24 +51,24 @@ body {
 	background-position: top;
 	clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
 	position: relative;
-}
 
-.header__logo-box {
-	position: absolute;
-	top: 4rem;
-	left: 4rem;
-}
+	&__logo-box {
+		position: absolute;
+		top: 4rem;
+		left: 4rem;
+	}
 
-.header__logo {
-	height: 3.5rem;
-}
+	&__logo {
+		height: 3.5rem;
+	}
 
-.header__text-box {
-	position: absolute;
-	top: 40%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	text-align: center;
+	&__text-box {
+		position: absolute;
+		top: 40%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		text-align: center;
+	}
 }
 
 .heading-primary {
@@ -76,26 +77,25 @@ body {
 	margin: auto;
 	backface-visibility: hidden;
 	margin-bottom: 60px;
-}
 
-.heading-primary--main {
-	display: block;
-	font-size: 6rem;
-	letter-spacing: 3.5rem;
-	font-weight: 400;
-	animation-name: moveInLeft;
-	animation-duration: 2s;
-	animation-timing-function: ease-out;
+	&--main {
+		display: block;
+		font-size: 6rem;
+		letter-spacing: 3.5rem;
+		font-weight: 400;
+		animation-name: moveInLeft;
+		animation-duration: 2s;
+		animation-timing-function: ease-out;
+		/* animation-delay: 2s;  */
+	}
 
-	/* animation-delay: 2s;  */
-}
-
-.heading-primary--sub {
-	display: block;
-	font-size: 20px;
-	letter-spacing: 1.74rem;
-	font-weight: 700;
-	animation: moveInRight 2s ease-out;
+	&--sub {
+		display: block;
+		font-size: 20px;
+		letter-spacing: 1.74rem;
+		font-weight: 700;
+		animation: moveInRight 2s ease-out;
+	}
 }
 
 @keyframes moveInLeft {
@@ -142,59 +142,61 @@ body {
 	}
 }
 
-.btn:link,
-.btn:visited {
-	font-size: 1.6rem;
-	font-weight: 700;
-	text-transform: uppercase;
-	text-decoration: none;
-	padding: 1.5rem 4rem;
-	display: inline-block;
-	border-radius: 5rem;
-	transition: all 0.2s;
-	position: relative;
-}
+.btn {
+	&:link,
+	&:visited {
+		font-size: 1.6rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		text-decoration: none;
+		padding: 1.5rem 4rem;
+		display: inline-block;
+		border-radius: 5rem;
+		transition: all 0.2s;
+		position: relative;
+	}
 
-.btn:hover {
-	transform: translateY(-3px);
-	box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
-}
+	&:hover {
+		transform: translateY(-3px);
+		box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
 
-.btn:active {
-	transform: translateY(-0.1rem);
-	box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
-}
+		&::after {
+			transform: scaleX(1.4) scaleY(1.6);
+			opacity: 0;
+		}
+	}
 
-.btn--white {
-	background-color: $color-white;
-	color: $color-grey-dark;
-}
+	&:active {
+		transform: translateY(-0.1rem);
+		box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
+	}
 
-.btn::after {
-	content: "";
-	display: inline-block;
-	height: 100%;
-	width: 100%;
-	border-radius: 5rem;
-	position: absolute;
-	top: 0;
-	left: 0;
-	z-index: -1;
-	transition: all 0.8s;
-}
+	&::after {
+		content: "";
+		display: inline-block;
+		height: 100%;
+		width: 100%;
+		border-radius: 5rem;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: -1;
+		transition: all 0.8s;
+	}
 
-.btn--white::after {
-	background-color: $color-white;
-}
+	&--white {
+		background-color: $color-white;
+		color: $color-grey-dark;
 
-.btn:hover::after {
-	transform: scaleX(1.4) scaleY(1.6);
-	opacity: 0;
-}
+		&::after {
+			background-color: $color-white;
+		}
+	}
 
-.btn--animated {
-	animation: moveinBottom 2s ease-out 0.8s;
-	animation-fill-mode: backwards;
+	&--animated {
+		animation: moveinBottom 2s ease-out 0.8s;
+		animation-fill-mode: backwards;
+	}
 }
 
 /*
@@ -207,7 +209,7 @@ body {
 7.Sass intro: *
 	* variables & nesting, 
 	* mixins, extends, functions,
-	* compile sass + reload page on save;
+	* compile sass + reload page on save == using "sass" rather than "node-sass"
  */
 
 /* header section ends */
