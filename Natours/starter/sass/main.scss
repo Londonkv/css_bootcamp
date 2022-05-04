@@ -10,17 +10,19 @@
 @import "base/utilities";
 
 // components imports
+@import "components/bg-video";
 @import "components/button";
+@import "components/card";
 @import "components/composition";
 @import "components/feature-box";
-@import "components/card";
+@import "components/form";
 @import "components/story";
-@import "components/bg-video";
 
 
 // layouts imports 
 @import "layout/header";
 @import "layout/grid-test";
+@import "layout/footer";
 
 // pages import 
 @import "pages/home";
