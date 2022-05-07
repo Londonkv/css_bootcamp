@@ -1,9 +1,9 @@
-// abstracts imports 
+// abstracts imports
 @import "abstracts/functions";
 @import "abstracts/mixins";
 @import "abstracts/variables";
 
-// base imports 
+// base imports
 @import "base/animations";
 @import "base/base";
 @import "base/typography";
@@ -19,16 +19,14 @@
 @import "components/popup";
 @import "components/story";
 
-
-// layouts imports 
+// layouts imports
 @import "layout/navigation";
 @import "layout/header";
 @import "layout/grid-test";
 @import "layout/footer";
 
-// pages import 
+// pages import
 @import "pages/home";
-
 
 /*
 1. background-image ==> gradients
@@ -41,6 +39,7 @@
 	* variables & nesting, 
 	* mixins, extends, functions,
 	* compile sass + reload page on save == using "sass" rather than "node-sass"
+8. ::selection pseudo element
  */
 
 /* header section ends */
