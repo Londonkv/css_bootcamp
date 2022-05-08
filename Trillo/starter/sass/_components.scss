@@ -1,0 +1,126 @@
+// ++++++++++++++++++++++++ Logo ++++++++++++
+.logo {
+	height: 3.25rem;
+	margin-left: 2rem;
+}
+
+// ++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++ Search ++++++++++++
+.search {
+	flex: 0 0 40%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	&__input {
+		background-color: var(--color-grey-light-2);
+		font-family: inherit;
+		font-size: inherit; // gets the header font-size
+		color: inherit;
+		border: none;
+		padding: 0.7rem 2rem;
+		border-radius: 150px;
+		width: 90%;
+		font-weight: 600;
+		transition: all 0.2s;
+		margin-right: -3.25rem; // the button moves on top of the input
+
+		&:focus {
+			outline: none;
+			width: 100%;
+			background-color: var(--color-grey-light-3);
+		}
+
+		&::placeholder,
+		&::-webkit-input-placeholder {
+			font-weight: 100;
+			color: var(--color-grey-dark-3);
+		}
+	}
+
+	&__input:focus + &__button {
+		background-color: var(--color-grey-light-3);
+	}
+
+	&__button {
+		border: none;
+		background-color: var(--color-grey-light-2);
+		transition: all 0.2s;
+
+		&:focus {
+			outline: none;
+		}
+
+		&:active {
+			transform: translateY(2px);
+		}
+	}
+
+	&__icon {
+		height: 2rem;
+		width: 2rem;
+		fill: var(--color-grey-dark-3);
+	}
+}
+
+// ++++++++++++++++++++++++++++++++++++++++++++
+// +++++++++++++++ user navigation ++++++++++++
+.user-nav {
+	align-self: stretch;
+
+	display: flex;
+
+	& > * {
+		// .user-nav and all it's direct children
+		padding: 0 2rem;
+		cursor: pointer;
+		height: 100%;
+		display: flex;
+		align-items: center;
+
+		&:hover {
+			background-color: var(--color-grey-light-2);
+		}
+	}
+
+	&__icon-box {
+		position: relative; // so we can position:absolute the notification // didn't work on the svg
+	}
+
+	&__icon {
+		height: 2.25rem;
+		width: 2.25rem;
+		fill: var(--color-grey-dark-2);
+	}
+
+	&__notification {
+		font-size: 0.8rem;
+		height: 1.75rem;
+		width: 1.75rem;
+		border-radius: 50%;
+		background-color: var(--color-primary-dark);
+		color: white;
+		position: absolute;
+		top: 1.5rem;
+		right: 1.1rem;
+
+		// flex also works with text
+		display: flex;
+		justify-content: center;
+		align-items: center; // to center the text horizontally and vetically
+	}
+	&__user {
+	}
+
+	&__user-photo {
+		height: 3.75rem;
+		border-radius: 50%;
+		margin-right: 1rem;
+	}
+
+	&__user-name {
+	}
+}
+
+// ++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++ Search ++++++++++++
