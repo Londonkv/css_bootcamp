@@ -12,6 +12,13 @@
 	align-items: center;
 	justify-content: center;
 
+	@media only screen and (max-width: $bp-smallest) {
+		order: 1;
+		flex: 0 0 100%;
+		margin-top: 2rem;
+		background-color: var(--color-grey-light-2);
+	}
+
 	&__input {
 		background-color: var(--color-grey-light-2);
 		font-family: inherit;
@@ -28,7 +35,7 @@
 		&:focus {
 			outline: none;
 			width: 100%;
-			background-color: var(--color-grey-light-3);
+			background-color: var(--color-grey-light-2);
 		}
 
 		&::placeholder,
@@ -46,6 +53,10 @@
 		border: none;
 		background-color: var(--color-grey-light-2);
 		transition: all 0.2s;
+
+		@media only screen and (max-width: $bp-smallest) {
+			margin-right: 3.25rem;
+		}
 
 		&:focus {
 			outline: none;
@@ -137,10 +148,25 @@
 	list-style: none;
 	margin-top: 3.5rem;
 
+	@media only screen and (max-width: $bp-medium) {
+		// displays the nav items side by side
+		display: flex;
+		margin: 0;
+	}
+
 	&__item {
 		position: relative; // &item::before set to absolute
 		&:not(:last-child) {
 			margin-bottom: 0.5rem;
+		}
+
+		@media only screen and (max-width: $bp-medium) {
+			flex: 1; // nav items occupy 100% width
+			text-align: center;
+
+			&:not(:last-child) {
+				margin-bottom: 0;
+			}
 		}
 	}
 
@@ -179,6 +205,20 @@
 		align-items: center;
 		position: relative;
 		z-index: 100; // only works when it has a position :: added so that the link still shows when bg color change on hover
+
+		@media only screen and (max-width: $bp-medium) {
+			justify-content: center;
+			padding: 2rem;
+		}
+
+		@media only screen and (max-width: $bp-medium) {
+			padding: 1rem 0;
+		}
+
+		@media only screen and (max-width: $bp-small) {
+			flex-direction: column;
+			align-items: center;
+		}
 	}
 
 	&__icon {
@@ -186,6 +226,10 @@
 		height: 1.75rem;
 		margin-right: 2rem;
 		fill: currentColor; // use it's color, or that of the parent
+
+		@media only screen and (max-width: $bp-small) {
+			margin-right: 0;
+		}
 	}
 }
 
@@ -196,6 +240,10 @@
 	color: var(--color-grey-light-4);
 	text-align: center;
 	padding: 2.5rem;
+
+	@media only screen and (max-width: $bp-medium) {
+		display: none; // hides the legal info
+	}
 }
 
 // ++++++++++++++++++++++++++++++++++++++++++++
@@ -223,6 +271,11 @@
 		padding: 1.5rem 3rem;
 		letter-spacing: 1px;
 		text-transform: uppercase;
+
+		@media only screen and (max-width: $bp-small) {
+			font-size: 1.5rem;
+			padding: 1.25rem 2rem;
+		}
 	}
 
 	&__stars {
@@ -260,15 +313,29 @@
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
+
+		@media only screen and (max-width: $bp-small) {
+			padding: 0 1.5rem;
+		}
 	}
+
 	&__rating-average {
 		font-size: 2.25rem;
 		font-weight: 300;
+
+		@media only screen and (max-width: $bp-small) {
+			font-size: 1.8rem;
+		}
 	}
+
 	&__rating-count {
 		font-size: 1rem;
 		text-transform: uppercase;
 		margin-bottom: -3px;
+
+		@media only screen and (max-width: $bp-small) {
+			font-size: 0.5rem;
+		}
 	}
 }
 
@@ -351,14 +418,18 @@
 		margin-right: 0.7rem;
 
 		// for older browser that don't supports masks:: use the svg as background image;
-		// background-image: url(../img/chevron-thin-right.svg);
-		// background-size: cover;
+		background-image: url(../img/chevron-thin-right.svg);
+		background-size: cover;
 
-		background-color: var(--color-primary);
-		-webkit-mask-image: url(../img/chevron-thin-right.svg);
-		mask-image: url(../img/chevron-thin-right.svg);
-		-webkit-mask-size: cover;
-		mask-size: cover; // in case the image's larger than given size
+		@supports (mask-image: url(../img/chevron-thin-right.svg)) or
+			(-webkit-mask-image: url(../img/chevron-thin-right.svg)) {
+			background-image: none; // to unset previous bg image if mask-image supported
+			background-color: var(--color-primary);
+			-webkit-mask-image: url(../img/chevron-thin-right.svg);
+			mask-image: url(../img/chevron-thin-right.svg);
+			-webkit-mask-size: cover;
+			mask-size: cover; // in case the image's larger than given size
+		}
 	}
 }
 
@@ -370,8 +441,16 @@
 	display: flex;
 	align-items: center;
 
+	@media only screen and (max-width: $bp-medium) {
+		flex-direction: column-reverse;
+	}
+
 	&__count {
 		margin-right: auto; // push everything on the far right
+
+		@media only screen and (max-width: $bp-medium) {
+			margin-right: 0;
+		}
 	}
 
 	&__photo {
@@ -396,6 +475,10 @@
 	margin-bottom: 3.5rem;
 	position: relative;
 	overflow: hidden; // quotation mark overflowing
+
+	@media only screen and (max-width: $bp-medium) {
+		padding: 2rem;
+	}
 
 	&__text {
 		margin-bottom: 2rem;
@@ -457,11 +540,19 @@
 	padding: 3.5rem 0;
 	text-align: center;
 
+	@media only screen and (max-width: $bp-medium) {
+		padding: 2rem 0;
+	}
+
 	&__book-now {
 		font-size: 2rem;
 		font-weight: 300;
 		text-transform: uppercase;
 		margin-bottom: 2.5rem;
+
+		@media only screen and (max-width: $bp-small) {
+			font-size: 1.4rem;
+		}
 	}
 }
 
@@ -483,6 +574,10 @@
 	overflow: hidden;
 	cursor: pointer;
 
+	@media only screen and (max-width: $bp-small) {
+		font-size: 1.4rem;
+	}
+
 	& > * {
 		// all children
 		display: inline-block;
@@ -493,6 +588,10 @@
 
 	&__visible {
 		padding: 2rem 7.5rem;
+
+		@media only screen and (max-width: $bp-small) {
+			padding: 1rem 4.5rem;
+		}
 	}
 
 	&__invisible {
