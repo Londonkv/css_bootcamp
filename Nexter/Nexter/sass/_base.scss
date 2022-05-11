@@ -14,6 +14,12 @@ $color-grey-dark-2: #6d5d4b;
 $font-primary: "Nunito", sans-serif;
 $font-display: "Josefin Sans", sans-serif;
 
+// Responsive breakpoints
+$bp-largest: 75em; // 1200px
+$bp-large: 56.25em; // 900px
+$bp-medium: 44em; // 700px
+$bp-small: 30em; // ~450px
+
 *,
 *::before,
 *::after {
@@ -25,6 +31,10 @@ $font-display: "Josefin Sans", sans-serif;
 html {
 	box-sizing: border-box;
 	font-size: 62.5%; // 1rem = 10px;
+
+	@media only screen and (max-width: $bp-largest) {
+		font-size: 55%; // 1rem = 8.8px;
+	}
 }
 
 body {
@@ -48,8 +58,25 @@ body {
 		)
 		[center-end] minmax(6rem, 1fr) [full-end];
 
-	// & > * {
-	// 	font-size: 3rem;
-	// 	padding: 40px;
-	// }
+	@media only screen and (max-width: $bp-large) {
+		// put the sidebar bar up top at 900px ==> remove first column and add a new row(the first)
+		grid-template-rows: [sidebar-start] 6rem [sidebar-end ] 80vh min-content 40vw repeat(
+				3,
+				min-content
+			);
+
+		grid-template-columns:
+			[full-start] minmax(6rem, 1fr) [center-start] repeat(
+				8,
+				[col-start] minmax(min-content, 14rem) [col-end]
+			)
+			[center-end] minmax(6rem, 1fr) [full-end];
+	}
+
+	@media only screen and (max-width: $bp-medium) {
+		//at 700px ==> realtors goes under header + story content under story pics
+		// 2 more rows, columns stay the same
+		// header occupies 100vh - 6rem of header // realtors min-content //
+		grid-template-rows: [sidebar-start] 6rem [sidebar-end ] calc(100vh - 6rem); // the rest of the page will be size to min-content == auto
+	}
 }

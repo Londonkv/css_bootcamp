@@ -9,6 +9,11 @@
 			url(../img/back.jpg);
 		background-size: cover;
 
+		@media only screen and (max-width: $bp-medium) {
+			// occupies 100vw
+			grid-column: 1/-1;
+		}
+
 		display: grid;
 		grid-template-rows: repeat(6, 1fr);
 		grid-template-columns: repeat(6, 1fr);
@@ -20,6 +25,9 @@
 		grid-row: 2/6;
 		width: 100%;
 		box-shadow: 0 2rem 5rem rgba(#000, 0.2);
+		@media only screen and (max-width: $bp-medium) {
+			width: 115%;
+		}
 	}
 	&__img--2 {
 		width: 112%;
@@ -27,12 +35,21 @@
 		grid-column: 4/7;
 		z-index: 10;
 		box-shadow: 0 2rem 5rem rgba(#000, 0.2);
+		@media only screen and (max-width: $bp-medium) {
+			width: 100%;
+		}
 	}
 
 	&__content {
 		background-color: $color-grey-light-1;
 		grid-column: col-start 5 / full-end;
 		padding: 6rem 5vw;
+
+		@media only screen and (max-width: $bp-medium) {
+			// occupies 100vw
+			grid-column: 1/-1;
+			grid-row: 5/6;
+		}
 
 		// // flex is better suited for one dimensionnal
 		// display: flex;

@@ -5,12 +5,22 @@
 
 	display: flex;
 	justify-content: center; // to center the menu button
+
+	@media only screen and (max-width: $bp-large) {
+		grid-column: 1 / -1;
+		grid-row: sidebar-start / sidebar-end;
+		justify-content: start; // to center the menu button
+	}
 }
 
 .nav-btn {
 	border: none;
 	border-radius: 0;
-	margin-top: 4rem;
+	margin: 4rem 0 0 0; // just a margin on the top
+
+	@media only screen and (max-width: $bp-large) {
+		margin: 2.8rem 0 0 3rem; // just a margin on the top
+	}
 
 	width: 4rem;
 	height: 2px;
